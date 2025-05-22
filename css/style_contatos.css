@@ -1,0 +1,20 @@
+/* Autor:: MCereja 19/05/2025
+   Estilizacao de Contatos utilizando bootstrap com recursividade */
+
+/* Estilo visual geral do formulário */
+form {
+    max-width: 700px;
+    margin: auto;
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+/* Media Query: Espaçamento adaptado para dispositivos menores */
+@media (max-width: 576px) {
+    form {
+        padding: 1.5rem;
+    }
+}
+
