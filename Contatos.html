@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Página de Contatos</title>
+    <!-- Autor: MCereja BV123456  
+         Data da implementacao: 19/05/2025 
+         Ajuste: 19/05/2025 add javascript com JQuery -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-533.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style_contatos.css">
+</head>
+
+<body>
+    <!-- py-5 seria um padding vertical 5, add espaçamento acima e abaixo da div.
+        o valor equivalente seria: padding-top: 3rem; padding-bottom: 3rem; -->
+    <!-- medidas para as classificacoes py-0	0rem, py-1	0.25rem(4px)
+        py-2	0.5rem(8px), py-3	1rem(16px), py-4	1.5rem(24px), py-5	3rem(48px) -->
+    <div class="container py-5">
+
+        <!-- mb-4 seria um margin bottom 4, equivalencia margin-bottom: 1.5rem; -->
+        <h3 class="text-center mb-4">Entre em contato conosco</h3>
+        <form action="" method="">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" id="nome" name="usuario_nome" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label for="Email" class="form-label">E-mail:</label>
+                <input type="email" id="Email" name="usuario_email"
+                    class="form-control"
+                    pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" />
+            </div>
+
+<!-- Existe escala col de 1 a 12, onde a equivalencia seria: 
+  col-sm- ≥ 576px, col-md- ≥ 768px, col-lg- ≥ 992px, col-xl- ≥ 1200px, col-xxl- ≥ 1400px -->
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="nascimento" class="form-label">Data de Nascimento:</label>
+                    <input type="date" id="nascimento" name="usuario_data" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label for="celular" class="form-label">Celular:</label>
+                    <input type="tel" id="celular" name="usuario_cel" class="form-control"
+                        pattern="^\d{2}-\d{5}-\d{4}$" placeholder="19-99122-8877" />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="msg" class="form-label">Mensagem:</label>
+                <textarea id="msg" name="usuario_msg" class="form-control" rows="4"></textarea>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+                <button type="reset" class="btn btn-outline-secondary">Limpar</button>
+                <button type="submit" class="btn btn-primary">Enviar sua mensagem</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap-533.bundle.min.js"></script>
+</body>
+</html>
+
