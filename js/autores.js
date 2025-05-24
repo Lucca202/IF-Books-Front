@@ -36,14 +36,14 @@ IFbooks.Autores = (function(){
         // console.log("Entrei na função exibir")
         let html = '<table class="table table-striped table-bordered>';
         html += '<thead class="table-primary">' +
-                        '<tr>' +
-                        '<th>ID</th>' + 
-                        '<th>Nome</th>' + 
-                        '<th>Nacionalidade</th>' + 
-                        '<th>Data de Nascimento</th>' + 
-                        '</tr>' + 
-                        '</thead>' + 
-                        '<tbody>';
+                            '<tr>' +
+                                '<th>ID</th>' + 
+                                '<th>Nome</th>' + 
+                                '<th>Nacionalidade</th>' + 
+                                '<th>Data de Nascimento</th>' + 
+                            '</tr>' + 
+                '</thead>' + 
+                '<tbody>';
 
         data.forEach(function(autor){
             html+= `<tr>
