@@ -20,8 +20,12 @@ IFbooks.Teste = (function () {
 
     Teste.prototype.iniciar = function(){
         console.log("Executei Iniciar...");
+        onTeste("Executei o Teste pelo Iniciar...");
     }
 
+    function onTeste(mensagem) {
+        console.log(mensagem);
+    }
     
     return Teste;
 }());
