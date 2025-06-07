@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Livros (Listar)</title>
+
+  <!-- Author: Prof. Marcelo bv?????? -->
+  <!-- Data Impl.: 05/05/2025
+       Ajustes 05/2025: add estilização com o botão consultar -->
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-533.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/style_autores.css">
+</head>
+<body class="p-6">
+
+  <div class="container py-5">
+    <h2 class="text-center mb-4">Lista de Livros</h2>
+
+    <form action="" method="">
+      <div class="input-group mb-3">
+        <label id = "texto-pesquisar" for="nome" class="col-form-label">Pesquisar:</label>
+        <input type="text" id="nome" name="autor_nome" class="form-control" />
+        <input type="button" id="btConsultar" class="btn btn-primary" value="Consultar" />
+      </div>
+    </form>
+
+    <div id="tabela-livros" class="table-responsive">
+      <p>Carregando Livros...</p>
+    </div>
+  </div>
+
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="js/bootstrap-533.bundle.min.js"></script>
+  <script src="js/livros.js"></script>
+</body>
+</html>
