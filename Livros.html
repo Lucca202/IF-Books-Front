@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Livros (Listar)</title>
+
+  <!-- Author: Prof. Marcelo bv?????? -->
+  <!-- Data Impl.: 05/05/2025
+       Ajustes 05/2025: add estilização com o botão consultar -->
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-533.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/style_autores.css">
+</head>
+
+<body class="p-6">
+
+  <div class="container py-5">
+    <h2 class="text-center mb-4">Lista de Livros</h2>
+
+    <form action="" method="">
+      <div class="input-group mb-3">
+        <label id="texto-pesquisar" for="nome" class="col-form-label">Pesquisar:</label>
+        <input type="text" id="nome" name="autor_nome" class="form-control" />
+        <input type="button" id="btConsultar" class="btn btn-primary" value="Consultar" />
+      </div>
+    </form>
+
+    <div id="tabela-livros" class="table-responsive">
+      <p>Carregando Livros...</p>
+    </div>
+
+
+    <div class="modal fade" id="form-edicao" tabindex="-1" aria-labelledby="modalEdicaoLabel" aria-hidden="true" >
+      <div class="modal-dialog">
+        <form class="modal-content" id="editar-livro-form">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalEdicaoLabel">Editar Livro</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="edit-id">
+
+            <div class="mb-3">
+              <label for="edit-nome" class="form-label">Nome:</label>
+              <input type="text" class="form-control" id="edit-nome" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="edit-data" class="form-label">Data de Publicação:</label>
+              <input type="date" class="form-control" id="edit-data" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="edit-editora" class="form-label">Editora:</label>
+              <input type="text" class="form-control" id="edit-editora" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="edit-resumo" class="form-label">Resumo:</label>
+              <textarea class="form-control" id="edit-resumo" required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="edit-autor" class="form-label">Autor:</label>
+              <input type="number" class="form-control" id="edit-autor" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="cancelar-edicao" class="btn btn-secondary"
+              data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 2000;">
+    <div id="toast-sucesso" class="toast align-items-center text-white bg-success border-0" role="alert"
+      aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          Livro atualizado com sucesso!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Fechar"></button>
+      </div>
+    </div>
+  
+    <div id="toast-erro" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive"
+      aria-atomic="true" style="z-index: 2000;">
+      <div class="d-flex">
+        <div class="toast-body">
+          Erro ao atualizar o livro!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Fechar"></button>
+      </div>
+    </div>
+  </div>
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="js/bootstrap-533.bundle.min.js"></script>
+  <script src="js/livros.js"></script>
+</body>
+
+</html>
