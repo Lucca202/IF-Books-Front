@@ -26,13 +26,55 @@
         <input type="button" id="btConsultar" class="btn btn-primary" value="Consultar" />
       </div>
     </form>
-
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3>Lista de Livros</h3>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-criar-livro">
+        <i class="bi bi-plus-lg"></i> Adicionar Livro
+      </button>
+    </div>
     <div id="tabela-livros" class="table-responsive">
       <p>Carregando Livros...</p>
     </div>
 
-
-    <div class="modal fade" id="form-edicao" tabindex="-1" aria-labelledby="modalEdicaoLabel" aria-hidden="true" >
+    <div class="modal fade" id="modal-criar-livro" tabindex="-1" aria-labelledby="tituloCriarLivro" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form id="form-criar-livro">
+            <div class="modal-header">
+              <h5 class="modal-title" id="tituloCriarLivro">Adicionar Novo Livro</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="novo-nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="novo-nome" required>
+              </div>
+              <div class="mb-3">
+                <label for="novo-data" class="form-label">Data de Publicação</label>
+                <input type="date" class="form-control" id="novo-data" required>
+              </div>
+              <div class="mb-3">
+                <label for="novo-editora" class="form-label">Editora</label>
+                <input type="text" class="form-control" id="novo-editora" required>
+              </div>
+              <div class="mb-3">
+                <label for="novo-resumo" class="form-label">Resumo</label>
+                <textarea class="form-control" id="novo-resumo" rows="3" required></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="novo-autor" class="form-label">ID do Autor</label>
+                <input type="number" class="form-control" id="novo-autor" required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Salvar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="form-edicao" tabindex="-1" aria-labelledby="modalEdicaoLabel" aria-hidden="true">
       <div class="modal-dialog">
         <form class="modal-content" id="editar-livro-form">
           <div class="modal-header">
@@ -78,6 +120,8 @@
   </div>
   </div>
 
+
+
   <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 2000;">
     <div id="toast-sucesso" class="toast align-items-center text-white bg-success border-0" role="alert"
       aria-live="assertive" aria-atomic="true">
@@ -89,15 +133,33 @@
           aria-label="Fechar"></button>
       </div>
     </div>
-  
-    <div id="toast-erro" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive"
-      aria-atomic="true" style="z-index: 2000;">
+
+    <div id="toast-erro" class="toast align-items-center text-white bg-danger border-0" role="alert"
+      aria-live="assertive" aria-atomic="true" style="z-index: 2000;">
       <div class="d-flex">
         <div class="toast-body">
           Erro ao atualizar o livro!
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
           aria-label="Fechar"></button>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modal-confirmar-exclusao" tabindex="-1" aria-labelledby="confirmarExclusaoLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmarExclusaoLabel">Confirmar Exclusão</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          Tem certeza que deseja excluir este livro?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="btn-confirmar-exclusao-modal">Excluir</button>
+        </div>
       </div>
     </div>
   </div>
