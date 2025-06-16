@@ -48,7 +48,7 @@ IFbooks.Livros = (function () {
                     };
 
                     $.ajax({
-                        url: API_URN_LIVRO,
+                        url: API_URI_LIVRO,
                         method: 'POST',
                         contentType: 'application/json',
                         data: JSON.stringify(novoLivro),
@@ -99,12 +99,12 @@ IFbooks.Livros = (function () {
     }
     function carregarLivros() {
 
-        const valor = $('#nome').val().trim();
+        const valor = $('#consulta-id').val().trim();
 
         // Se estiver vazio, buscar todos
         if (valor === '') {
             $.ajax({
-                url: API_URN_LIVRO,
+                url: API_URI_LIVRO,
                 method: 'GET',
                 dataType: 'json',
                 success: exibirTabelaLivros.bind(this),
@@ -118,7 +118,7 @@ IFbooks.Livros = (function () {
         // Se for número, buscar por ID específico
         if (!isNaN(valor)) {
             $.ajax({
-                url: API_URN_LIVRO + `/${valor}`,
+                url: API_URI_LIVRO + `/${valor}`,
                 method: 'GET',
                 dataType: 'json',
                 success: function (livro) {
@@ -133,7 +133,7 @@ IFbooks.Livros = (function () {
 
     function deletarLivros(id) {
         $.ajax({
-            url: API_URN_LIVRO + `/${id}`,
+            url: API_URI_LIVRO + `/${id}`,
             method: 'DELETE',
             dataType: 'json',
             success: function () {
@@ -154,7 +154,7 @@ IFbooks.Livros = (function () {
     function atualizarLivro(livro) {
         console.log(JSON.stringify(livro));
         $.ajax({
-            url: API_URN_LIVRO + `${livro.id}`,
+            url: API_URI_LIVRO + `${livro.id}`,
             method: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify(livro),
@@ -183,7 +183,7 @@ IFbooks.Livros = (function () {
     function verificarAutor(id) {
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: API_URN_LIVRO + `/${id}`,
+                url: API_URN_AUTOR + `/${id}`,
                 method: 'GET',
                 success: function (autor) {
                     resolve(autor);
@@ -205,7 +205,7 @@ IFbooks.Livros = (function () {
     }
     function abrirFormularioEdicao(id) {
         $.ajax({
-            url: API_URN_LIVRO + `/${id}`,
+            url: API_URI_LIVRO + `/${id}`,
             method: 'GET',
             dataType: 'json',
             success: function (livro) {
