@@ -1,6 +1,3 @@
-<!-- Author: Prof. Marcelo bv?????? -->
-<!-- Data Impl.: 05/05/2025
-       Ajustes 05/2025: add estilização com o botão consultar -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -9,36 +6,200 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Autores (Listar)</title>
 
-
+  <!-- Author: Prof. Marcelo bv?????? -->
+  <!-- Data Impl.: 05/05/2025
+       Ajustes 05/2025: add estilização com o botão consultar -->
 
   <link rel="stylesheet" type="text/css" href="css/bootstrap-533.min.css" />
   <link rel="stylesheet" type="text/css" href="css/style_autores.css">
 </head>
 
-<body class="p-6">
 
-  <div class="container py-5">
-    <h2 class="text-center mb-4">Lista de Autores</h2>
+<body class="d-flex flex-column min-vh-100">
 
-    <form action="" method="">
-      <div class="input-group mb-3">
-        <label id="texto-pesquisar" for="nome" class="col-form-label">Pesquisar:</label>
-        <input type="text" id="nome" name="autor_nome" class="form-control" />
-        <input type="button" id="btConsultar" class="btn btn-primary" value="Consultar" />
-      </div>
-    </form>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#index.html">Autores</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div id="tabela-autores" class="table-responsive">
-      <p>Carregando autores...</p>
+      <!-- Collapse para telas pequenas -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+        <ul class="navbar-nav mb-2 mb-lg-0 d-flex gap-3">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Livros.html">Livros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="Autores.html">Autores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contato.html">Contato</a>
+          </li>
+
+    </div>
+  </nav>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Conteúdo principal -->
+      <main class=" flex-grow-1 col-md-10 py-4 px-3">
+        <div class="container-fluid">
+           <div class="row g-2 mb-4">
+            <!-- Campo de pesquisa e botão Consultar -->
+            <div class="col-12 col-md-6">
+              <label for="nome" class="form-label fw-bold text-primary">Pesquisar:</label>
+              <div class="input-group">
+                <input type="text" id="nome" name="autor_nome" class="form-control" placeholder="Digite o ID do autor">
+                <button id="btConsultar" class="btn btn-primary">Consultar</button>
+              </div>
+            </div>
+
+            <!-- Botão Adicionar Autor -->
+            <div class="col-12 col-md-6 d-flex align-items-end">
+              <button class="btn btn-success w-100 w-md-auto" data-bs-toggle="modal" data-bs-target="#modal-criar-autor">
+                Adicionar Autor
+              </button>
+            </div>
+          </div>
+          <!-- Título e botão de adicionar -->
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="mb-0">Lista de Autores</h3>
+          </div>
+
+          <!-- Tabela -->
+          <div id="tabela-autores" class="table-responsive overflow-auto" style="max-height: 60vh;">
+            <p>Carregando Autores...</p>
+          </div>
+        </div>
+      </main>
     </div>
   </div>
 
+  <!-- Footer -->
+
+  <footer class="bg-dark text-white text-center py-3 mt-auto">
+    &copy; 2025 - Sistema de Gerenciamento de Autores
+  </footer>
+
+  <div class="modal fade" id="modal-criar-autor" tabindex="-1" aria-labelledby="tituloCriarLivro" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <form id="form-criar-autor">
+          <div class="modal-header">
+            <h5 class="modal-title" id="tituloCriarLivro">Adicionar Novo Autor</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="novo-nome" class="form-label">Nome:</label>
+              <input type="text" class="form-control" id="novo-nome" required>
+            </div>
+            <div class="mb-3">
+              <label for="novo-nacionalidade" class="form-label">Nacionalidade:</label>
+              <input type="text" class="form-control" id="novo-nacionalidade" required>
+            </div>
+            <div class="mb-3">
+              <label for="novo-data-nascimento" class="form-label">Data Nascimento:</label>
+              <input type="date" class="form-control" id="novo-data-nascimento" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Salvar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="form-edicao" tabindex="-1" aria-labelledby="modalEdicaoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" id="editar-autor-form">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEdicaoLabel">Editar Autor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="edit-id">
+
+          <div class="mb-3">
+            <label for="edit-nome" class="form-label">Nome:</label>
+            <input type="text" class="form-control" id="edit-nome" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="edit-nacionalidade" class="form-label">Nacionalidade:</label>
+            <input type="text" class="form-control" id="edit-nacionalidade" required>
+          </div>
+          <div class="mb-3">
+            <label for="edit-data-nascimento" class="form-label">Data de Nascimento</label>
+            <input type="date" class="form-control" id="edit-data-nascimento" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancelar-edicao" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 2000;">
+    <div id="toast-sucesso" class="toast align-items-center text-white bg-success border-0" role="alert"
+      aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          Autor atualizado com sucesso!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Fechar"></button>
+      </div>
+    </div>
+
+    <div id="toast-erro" class="toast align-items-center text-white bg-danger border-0" role="alert"
+      aria-live="assertive" aria-atomic="true" style="z-index: 2000;">
+      <div class="d-flex">
+        <div class="toast-body">
+          Erro ao atualizar o autor!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Fechar"></button>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modal-confirmar-exclusao" tabindex="-1" aria-labelledby="confirmarExclusaoLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmarExclusaoLabel">Confirmar Exclusão</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          Tem certeza que deseja excluir este autor?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="btn-confirmar-exclusao-modal">Excluir</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="js/jquery-3.6.0.min.js"></script>
   <script src="js/bootstrap-533.bundle.min.js"></script>
+  <script src="js/api-config.js"></script>
   <script src="js/autores.js"></script>
+  
 </body>
 
 </html>
-
-
-

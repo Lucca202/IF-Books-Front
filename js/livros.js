@@ -30,7 +30,7 @@ IFbooks.Livros = (function () {
         arrumarBackDropModal('#modal-confirmar-exclusao');
 
     }
-
+    // Funções De Requisições
     function fazerCriacaoDoLivro(formId) {
         $(formId).on('submit', function (e) {
             e.preventDefault();
@@ -48,7 +48,7 @@ IFbooks.Livros = (function () {
                     };
 
                     $.ajax({
-                        url: 'http://localhost:8080/livros',
+                        url: API_URN_LIVRO,
                         method: 'POST',
                         contentType: 'application/json',
                         data: JSON.stringify(novoLivro),
@@ -71,15 +71,6 @@ IFbooks.Livros = (function () {
                     const toastErro = new bootstrap.Toast(document.getElementById('toast-erro'));
                     toastErro.show();
                 });
-        });
-    }
-    function fazerExclusaoDoLivro(exclusaoId) {
-        $(exclusaoId).on('click', function () {
-            $(exclusaoId).on('click', function () {
-                if (livroParaExcluirId !== null) {
-                    deletarLivros(livroParaExcluirId);
-                }
-            });
         });
     }
     function fazerAlteraçãoDoLivro(edicaoId) {
@@ -106,38 +97,6 @@ IFbooks.Livros = (function () {
                 });
         });
     }
-
-    function verificarAutor(id) {
-        return new Promise((resolve, reject) => {
-            $.ajax({
-                url: `http://localhost:8080/autores/${id}`,
-                method: 'GET',
-                success: function (autor) {
-                    resolve(autor);
-                },
-                error: function () {
-                    reject();
-                }
-            });
-        });
-    }
-
-    function arrumarBackDropModal(modalId) {
-        $(modalId).on('hidden.bs.modal', function () {
-            $('.modal-backdrop').remove();
-            $('body').removeClass('modal-open');
-            $('body').css('padding-right', '');
-        });
-    }
-    function converterDataUSA(dataBR) {
-        const partes = dataBR.split('/');
-        return `${partes[2]}-${partes[1].padStart(2, '0')}-${partes[0].padStart(2, '0')}`;
-    }
-    function formatarDataBR(dataISO) {
-        const partes = dataISO.split("-");
-        return `${partes[2]}/${partes[1]}/${partes[0]}`; // dd/MM/yyyy
-    }
-
     function carregarLivros() {
 
         const valor = $('#nome').val().trim();
@@ -145,7 +104,7 @@ IFbooks.Livros = (function () {
         // Se estiver vazio, buscar todos
         if (valor === '') {
             $.ajax({
-                url: 'http://localhost:8080/livros',
+                url: API_URN_LIVRO,
                 method: 'GET',
                 dataType: 'json',
                 success: exibirTabelaLivros.bind(this),
@@ -159,7 +118,7 @@ IFbooks.Livros = (function () {
         // Se for número, buscar por ID específico
         if (!isNaN(valor)) {
             $.ajax({
-                url: `http://localhost:8080/livros/${valor}`,
+                url: API_URN_LIVRO + `/${valor}`,
                 method: 'GET',
                 dataType: 'json',
                 success: function (livro) {
@@ -174,7 +133,7 @@ IFbooks.Livros = (function () {
 
     function deletarLivros(id) {
         $.ajax({
-            url: `http://localhost:8080/livros/${id}`,
+            url: API_URN_LIVRO + `/${id}`,
             method: 'DELETE',
             dataType: 'json',
             success: function () {
@@ -192,11 +151,10 @@ IFbooks.Livros = (function () {
             }
         });
     }
-
     function atualizarLivro(livro) {
         console.log(JSON.stringify(livro));
         $.ajax({
-            url: `http://localhost:8080/livros/${livro.id}`,
+            url: API_URN_LIVRO + `${livro.id}`,
             method: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify(livro),
@@ -221,9 +179,33 @@ IFbooks.Livros = (function () {
         });
     }
 
+    // Funções auxiliares das requisições 
+    function verificarAutor(id) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: API_URN_LIVRO + `/${id}`,
+                method: 'GET',
+                success: function (autor) {
+                    resolve(autor);
+                },
+                error: function () {
+                    reject();
+                }
+            });
+        });
+    }
+    function fazerExclusaoDoLivro(exclusaoId) {
+        $(exclusaoId).on('click', function () {
+            $(exclusaoId).on('click', function () {
+                if (livroParaExcluirId !== null) {
+                    deletarLivros(livroParaExcluirId);
+                }
+            });
+        });
+    }
     function abrirFormularioEdicao(id) {
         $.ajax({
-            url: `http://localhost:8080/livros/${id}`,
+            url: API_URN_LIVRO + `/${id}`,
             method: 'GET',
             dataType: 'json',
             success: function (livro) {
@@ -239,9 +221,27 @@ IFbooks.Livros = (function () {
                 modal.show()
             },
             error: function () {
-                alert("Erro ao carregar os dados do livro.");
+                const toastErro = new bootstrap.Toast(document.getElementById('toast-erro'));
+                toastErro.show();
             }
         });
+    }
+
+    // Funções Extras 
+    function arrumarBackDropModal(modalId) {
+        $(modalId).on('hidden.bs.modal', function () {
+            $('.modal-backdrop').remove();
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '');
+        });
+    }
+    function converterDataUSA(dataBR) {
+        const partes = dataBR.split('/');
+        return `${partes[2]}-${partes[1].padStart(2, '0')}-${partes[0].padStart(2, '0')}`;
+    }
+    function formatarDataBR(dataISO) {
+        const partes = dataISO.split("-");
+        return `${partes[2]}/${partes[1]}/${partes[0]}`; // dd/MM/yyyy
     }
 
     function adicionarEventosDosBotoes() {
@@ -263,8 +263,8 @@ IFbooks.Livros = (function () {
 
     function exibirTabelaLivros(data) {
         // console.log("Entrei na função exibir")
-        let html = '<table class="table table-striped table-bordered>';
-        html += '<thead class="table-primary">' +
+        let html = '<table class="tabelas-livros">';
+        html += '<thead>' +
             '<tr>' +
             '<th>ID</th>' +
             '<th>Nome</th>' +
@@ -286,8 +286,10 @@ IFbooks.Livros = (function () {
                         <td>${livro.resumo}</td>
                         <td>${livro.autor.id}</td>
                         <td>
-                            <button class="btn-editar" data-id="${livro.id}">Editar</button>
-                            <button class="btn-excluir" data-id="${livro.id}">Excluir</button>
+                            <div class="d-flex flex-column flex-md-row gap-2">
+                                <button class="btn btn-editar w-100" data-id="${livro.id}">Editar</button>
+                                <button class="btn btn-excluir w-100" data-id="${livro.id}">Excluir</button>
+                            </div>
                         </td>
                     </tr>`;
         });

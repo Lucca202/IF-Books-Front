@@ -1,24 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Livros (Listar)</title>
+  <title>Autores (Listar)</title>
 
   <!-- Author: Prof. Marcelo bv?????? -->
   <!-- Data Impl.: 05/05/2025
        Ajustes 05/2025: add estilização com o botão consultar -->
 
-  <link rel="stylesheet" type="text/css" href="css/bootstrap-533.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-533.min.css" />
   <link rel="stylesheet" type="text/css" href="css/style_autores.css">
 </head>
-<body class="p-6">
-  <header>
-    
-  </header>
+
+
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#index.html">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapse para telas pequenas -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+        <ul class="navbar-nav mb-2 mb-lg-0 d-flex gap-3">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Livros.html">Livros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="Autores.html">Autores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contato.html">Contato</a>
+          </li>
+
+      </div>
+  </nav>
+
+ 
+
   
+  <!-- Footer -->
+
+  <footer class="bg-dark text-white text-center py-3 mt-auto">
+    &copy; 2025 - Sistema de Gerenciamento de Autores
+  </footer>
+
   <script src="js/jquery-3.6.0.min.js"></script>
   <script src="js/bootstrap-533.bundle.min.js"></script>
-  <script src="js/livros.js"></script>
+  <script src="js/index.js"></script>
 </body>
+
 </html>

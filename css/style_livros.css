@@ -11,8 +11,6 @@
   --fundo-escuro: #f4c2b5;
 }
 
-
-
 body {
   background-color: var(--fundo-suave);
   color: var(--cor-azul);
@@ -27,9 +25,6 @@ body {
   color: var(--texto-claro) !important;
 }
 
-.navbar-brand:hover {  
-    color: var(--fundo-medio) !important;
-}
 .navbar-dark .navbar-nav .nav-link.active {
   color: var(--cor-primaria) !important;
   font-weight: bold;
@@ -55,6 +50,7 @@ body {
 .btn-success:hover {
   background-color: var(--cor-secundaria) !important;
 }
+
 .btn-editar {
   background-color: #c47f5a; /* tom terroso alaranjado */
   border: none;
@@ -75,11 +71,9 @@ body {
   background-color: #8c2a2a;
 }
 
-
-/* Estilo da Tabela */
-
-.tabela-autores th,
-.tabela-autores td {
+/*Tabelas*/
+.tabelas-livros th,
+.tabelas-livros td {
   border: 1px solid rgb(48, 48, 48) !important;
   padding: 10px;
   color: var(--texto-claro);
@@ -87,23 +81,24 @@ body {
   text-align: center;
 }
 
-.tabela-autores td {
+.tabelas-livros td {
     color: black
 }
 
-.tabela-autores th {    
+.tabelas-livros th {    
     background-color: #233342;
 }
-.tabela-autores {
+.tabelas-livros {
     width: 100%;
 }
 
-.tabela-autores tbody tr:nth-child(odd) {
+.tabelas-livros tbody tr:nth-child(odd) {
     background-color: var(--fundo-medio);
 }
-.tabela-autores tbody tr:nth-child(even) {
+.tabelas-livros tbody tr:nth-child(even) {
     background-color: var(--fundo-escuro);
 }
+
 
 /* Campos */
 .input-group-text.bg-primary {

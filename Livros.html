@@ -11,112 +11,162 @@
        Ajustes 05/2025: add estilização com o botão consultar -->
 
   <link rel="stylesheet" type="text/css" href="css/bootstrap-533.min.css" />
-  <link rel="stylesheet" type="text/css" href="css/style_autores.css">
+  <link rel="stylesheet" type="text/css" href="css/style_livros.css">
 </head>
 
-<body class="p-6">
 
-  <div class="container py-5">
-    <h2 class="text-center mb-4">Lista de Livros</h2>
+<body class="d-flex flex-column min-vh-100">
 
-    <form action="" method="">
-      <div class="input-group mb-3">
-        <label id="texto-pesquisar" for="nome" class="col-form-label">Pesquisar:</label>
-        <input type="text" id="nome" name="autor_nome" class="form-control" />
-        <input type="button" id="btConsultar" class="btn btn-primary" value="Consultar" />
-      </div>
-    </form>
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <h3>Lista de Livros</h3>
-      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-criar-livro">
-        <i class="bi bi-plus-lg"></i> Adicionar Livro
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#index.html">Biblioteca</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
-    </div>
-    <div id="tabela-livros" class="table-responsive">
-      <p>Carregando Livros...</p>
-    </div>
 
-    <div class="modal fade" id="modal-criar-livro" tabindex="-1" aria-labelledby="tituloCriarLivro" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <form id="form-criar-livro">
-            <div class="modal-header">
-              <h5 class="modal-title" id="tituloCriarLivro">Adicionar Novo Livro</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      <!-- Collapse para telas pequenas -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+        <ul class="navbar-nav mb-2 mb-lg-0 d-flex gap-3">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="Livros.html">Livros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="autores.html">Autores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contato.html">Contato</a>
+          </li>
+  </nav>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Conteúdo principal -->
+      <main class=" flex-grow-1 col-md-10 py-4 px-3">
+        <div class="container-fluid">
+          <!--AQUI ACABA-->
+          <div class="row g-2 mb-4">
+            <!-- Campo de pesquisa e botão Consultar -->
+            <div class="col-12 col-md-6">
+              <label id="texto-pesquisar" for="nome" class="form-label fw-bold text-primary">Pesquisar:</label>
+              <div class="input-group">
+                <input type="text" id="nome" name="Livro_nome" class="form-control" placeholder="Digite o nome do livro">
+                <button id="btConsultar" class="btn btn-primary">Consultar</button>
+              </div>
             </div>
-            <div class="modal-body">
-              <div class="mb-3">
-                <label for="novo-nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="novo-nome" required>
-              </div>
-              <div class="mb-3">
-                <label for="novo-data" class="form-label">Data de Publicação</label>
-                <input type="date" class="form-control" id="novo-data" required>
-              </div>
-              <div class="mb-3">
-                <label for="novo-editora" class="form-label">Editora</label>
-                <input type="text" class="form-control" id="novo-editora" required>
-              </div>
-              <div class="mb-3">
-                <label for="novo-resumo" class="form-label">Resumo</label>
-                <textarea class="form-control" id="novo-resumo" rows="3" required></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="novo-autor" class="form-label">ID do Autor</label>
-                <input type="number" class="form-control" id="novo-autor" required>
-              </div>
+
+            <!-- Botão Adicionar Autor -->
+            <div class="col-12 col-md-6 d-flex align-items-end">
+              <button class="btn btn-success w-100 w-md-auto" data-bs-toggle="modal" data-bs-target="#modal-criar-livro">
+                Adicionar Autor
+              </button>
             </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-success">Salvar</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            </div>
-          </form>
+          </div>
+          <!-- Título e botão de adicionar -->
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="mb-0">Lista de Livros</h3>
+          </div>
+
+          <!-- Tabela -->
+          <div id="tabela-livros" class="table-responsive overflow-auto" style="max-height: 60vh;">
+            <p>Carregando Livros...</p>
+          </div>
         </div>
-      </div>
+      </main>
     </div>
-    <div class="modal fade" id="form-edicao" tabindex="-1" aria-labelledby="modalEdicaoLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <form class="modal-content" id="editar-livro-form">
+  </div>
+
+  <!-- Footer -->
+
+  <footer class="bg-dark text-white text-center py-3 mt-auto">
+    &copy; 2025 - Sistema de Gerenciamento de Livros
+  </footer>
+
+  <div class="modal fade" id="modal-criar-livro" tabindex="-1" aria-labelledby="tituloCriarLivro" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <form id="form-criar-livro">
           <div class="modal-header">
-            <h5 class="modal-title" id="modalEdicaoLabel">Editar Livro</h5>
+            <h5 class="modal-title" id="tituloCriarLivro">Adicionar Novo Livro</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
           </div>
           <div class="modal-body">
-            <input type="hidden" id="edit-id">
-
             <div class="mb-3">
-              <label for="edit-nome" class="form-label">Nome:</label>
-              <input type="text" class="form-control" id="edit-nome" required>
+              <label for="novo-nome" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="novo-nome" required>
             </div>
-
             <div class="mb-3">
-              <label for="edit-data" class="form-label">Data de Publicação:</label>
-              <input type="date" class="form-control" id="edit-data" required>
+              <label for="novo-data" class="form-label">Data de Publicação</label>
+              <input type="date" class="form-control" id="novo-data" required>
             </div>
-
             <div class="mb-3">
-              <label for="edit-editora" class="form-label">Editora:</label>
-              <input type="text" class="form-control" id="edit-editora" required>
+              <label for="novo-editora" class="form-label">Editora</label>
+              <input type="text" class="form-control" id="novo-editora" required>
             </div>
-
             <div class="mb-3">
-              <label for="edit-resumo" class="form-label">Resumo:</label>
-              <textarea class="form-control" id="edit-resumo" required></textarea>
+              <label for="novo-resumo" class="form-label">Resumo</label>
+              <textarea class="form-control" id="novo-resumo" rows="3" required></textarea>
             </div>
-
             <div class="mb-3">
-              <label for="edit-autor" class="form-label">Autor:</label>
-              <input type="number" class="form-control" id="edit-autor" required>
+              <label for="novo-autor" class="form-label">ID do Autor</label>
+              <input type="number" class="form-control" id="novo-autor" required>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" id="cancelar-edicao" class="btn btn-secondary"
-              data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="submit" class="btn btn-success">Salvar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           </div>
         </form>
       </div>
     </div>
+  </div>
+  <div class="modal fade" id="form-edicao" tabindex="-1" aria-labelledby="modalEdicaoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" id="editar-livro-form">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEdicaoLabel">Editar Livro</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="edit-id">
+
+          <div class="mb-3">
+            <label for="edit-nome" class="form-label">Nome:</label>
+            <input type="text" class="form-control" id="edit-nome" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="edit-data" class="form-label">Data de Publicação:</label>
+            <input type="date" class="form-control" id="edit-data" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="edit-editora" class="form-label">Editora:</label>
+            <input type="text" class="form-control" id="edit-editora" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="edit-resumo" class="form-label">Resumo:</label>
+            <textarea class="form-control" id="edit-resumo" required></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="edit-autor" class="form-label">Autor:</label>
+            <input type="number" class="form-control" id="edit-autor" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancelar-edicao" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
   </div>
   </div>
 
@@ -165,6 +215,7 @@
   </div>
   <script src="js/jquery-3.6.0.min.js"></script>
   <script src="js/bootstrap-533.bundle.min.js"></script>
+  <script src="js/api-config.js"></script>
   <script src="js/livros.js"></script>
 </body>
 
