@@ -1,59 +1,106 @@
+<!-- /**
+ * Autor: lcnato - BV 3044297
+ * data implementação: 16 / 06 / 2025
+ * Principal página, onde há o primeiro acesso, página introdutória, conta
+ com links de navegações para as outras páginas e utiliza estilizações. Além do uso
+ do BootStrap.
+ * 
+ */ -->
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autores (Listar)</title>
+  <title>IF-Books</title>
 
   <!-- Author: Prof. Marcelo bv?????? -->
   <!-- Data Impl.: 05/05/2025
        Ajustes 05/2025: add estilização com o botão consultar -->
 
   <link rel="stylesheet" type="text/css" href="css/bootstrap-533.min.css" />
-  <link rel="stylesheet" type="text/css" href="css/style_autores.css">
+  <link rel="stylesheet" type="text/css" href="css/style_index.css">
 </head>
 
 
 <body class="d-flex flex-column min-vh-100">
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#index.html">Home</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Collapse para telas pequenas -->
-      <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
-        <ul class="navbar-nav mb-2 mb-lg-0 d-flex gap-3">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Início</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Livros.html">Livros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="Autores.html">Autores</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contato.html">Contato</a>
-          </li>
-
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-custom shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="Index.html">IF-Books</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+          <ul class="navbar-nav d-flex gap-3 text-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="Index.html">Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Livros.html">Livros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Autores.html">Autores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Contatos.html">Contato</a>
+            </li>
+          </ul>
+        </div>
       </div>
-  </nav>
+    </nav>
+  </header>
 
- 
 
-  
+
+  <main class="flex-grow-1">
+    <section class="introducao text-center">
+      <div class="container">
+        <h1 class="titulo-principal">Bem-vindo ao IF-Books</h1>
+        <p class="descricao">
+          Este projeto foi desenvolvido pelo aluno Lucca Bonato Costa do <strong>3º semestre</strong> do curso de Introdução ao Desenvolvimento Web
+          do <strong>Instituto Federal de São João da Boa Vista</strong>, como parte da disciplina
+          <strong>IDSW</strong>.
+        </p>
+        <p class="descricao">
+          O sistema permite gerenciar livros e autores de forma simples e moderna.
+        </p>
+        <div class="botoes-acesso">
+          <a href="Livros.html" class="btn btn-livros">Ver Livros</a>
+          <a href="Autores.html" class="btn btn-autores">Ver Autores</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sobre">
+      <div id="container-imagem-sobre" class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
+        <div class="imagem-banner mb-4 mb-md-0">
+          <img id="img-if-books" src="img/IF-BooksBanner.png" alt="Banner IF-Books" class="img-fluid rounded shadow" >
+        </div>
+        <div class="texto-sobre text-center text-md-start">
+          <h2 class="titulo-sobre">Sobre o Projeto</h2>
+          <p class="descricao">
+            O IF-Books simula um sistema de biblioteca acadêmica, utilizando tecnologias como
+            <strong>HTML, CSS, JS, Bootstrap, Spring Boot</strong> e <strong>MySQL</strong>, integrando o front-end ao
+            back-end via API REST.
+          </p>
+          <p class="descricao">
+            Um ambiente de aprendizado prático em desenvolvimento web moderno.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <!-- Footer -->
-
-  <footer class="bg-dark text-white text-center py-3 mt-auto">
-    &copy; 2025 - Sistema de Gerenciamento de Autores
+  <footer class="footer-custom text-center text-white py-3 mt-auto">
+    <div class="container">
+      &copy; 2025 - Desenvolvido para a disciplina de IDSW | IFSP - São João da Boa Vista
+    </div>
   </footer>
-
   <script src="js/jquery-3.6.0.min.js"></script>
   <script src="js/bootstrap-533.bundle.min.js"></script>
   <script src="js/index.js"></script>

@@ -1,3 +1,12 @@
+<!-- /**
+ * Autor: lcnato - BV 3044297
+ * data implementação: 15 / 05 / 2025
+ * Página de Autores, onde exibe todos os autores da tabela, 
+ utiliza o autores.js para criar as tabelas e funcionalidades. Além de ter atrelados a eles 
+ o CSS externo style_autores.css para a estilização da página
+ * 
+ */ -->
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -20,7 +29,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#index.html">Autores</a>
+      <a class="navbar-brand fw-bold" href="Index.html">Autores</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
         aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,7 +39,7 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
         <ul class="navbar-nav mb-2 mb-lg-0 d-flex gap-3">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Início</a>
+            <a class="nav-link" href="Index.html">Início</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Livros.html">Livros</a>
@@ -39,7 +48,7 @@
             <a class="nav-link active" href="Autores.html">Autores</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contato.html">Contato</a>
+            <a class="nav-link" href="Contatos.html">Contato</a>
           </li>
 
     </div>
@@ -186,7 +195,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
         </div>
         <div class="modal-body">
-          Tem certeza que deseja excluir este autor?
+          Tem certeza que deseja excluir este autor? 
+          <strong>OBS:</strong> Apagará todos os livros com este autor também!
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

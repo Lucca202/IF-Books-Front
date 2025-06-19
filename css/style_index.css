@@ -1,0 +1,200 @@
+/**
+ * Autor: lcnato - BV 3044297
+ * data implementação: 16 / 06 / 2025
+ * Página de Estilização dá Página Inicial. Index.html
+ * 
+ */
+
+:root {
+    --cor-primaria: #CE8054;
+    --cor-secundaria: #B35340;
+    --cor-terciaria: #6F3637;
+    --cor-azul: #233342;
+    --cor-vinho: #4B2B31;
+
+    --texto-claro: #f8f9fa;
+    --fundo-suave: #fdfaf9;
+    --fundo-medio: #fbe6e0;
+    --fundo-escuro: #f4c2b5;
+}
+
+/* Navbar */
+.bg-custom {
+    background-color: var(--cor-azul);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--texto-claro) !important;
+}
+
+.nav-link.active {
+    color: var(--cor-primaria) !important;
+}
+
+
+
+/* Introdução */
+.introducao {
+    background-color: var(--fundo-suave);
+    padding: 5rem 1rem;
+    animation: fadeIn 1s ease-in;
+}
+
+.titulo-principal {
+    color: var(--cor-azul);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.descricao {
+    color: var(--cor-terciaria);
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+}
+
+.botoes-acesso {
+    margin-top: 2rem;
+}
+
+.btn-livros,
+.btn-autores {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    margin: 0.5rem;
+    transition: all 0.3s ease;
+    color: var(--texto-claro);
+}
+
+.btn-livros {
+    background-color: var(--cor-primaria);
+}
+
+.btn-livros:hover {
+    background-color: var(--cor-secundaria);
+}
+
+.btn-autores {
+    background-color: var(--cor-secundaria);
+}
+
+.btn-autores:hover {
+    background-color: var(--cor-terciaria);
+}
+
+
+#img-if-books {
+    width: 70%;
+    box-shadow: 0px 0px 40px 15px var(--cor-vinho) !important;
+}
+
+/* Sobre */
+.sobre {
+    background-color: var(--fundo-medio);
+    padding: 5rem 1rem;
+}
+
+.titulo-sobre {
+    color: var(--cor-vinho);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.texto-sobre .descricao {
+    color: var(--cor-terciaria);
+}
+
+/* Footer */
+.footer-custom {
+    background-color: var(--cor-azul);
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .titulo-principal {
+        font-size: 2.25rem;
+    }
+
+    .titulo-sobre {
+        text-align: center;
+    }
+
+    #img-if-books {
+        margin-left: 15%
+    }
+}
+
+
+@media (min-width: 2560px) {
+    .html {
+        font-size: 40px;
+    }
+
+    .navbar-brand {
+        font-size: 3rem;
+    }
+
+    .nav-link {
+        font-size: 3rem;
+    }
+
+    .titulo-principal {
+        font-size: 7rem;
+    }
+
+    .titulo-sobre {
+        text-align: center;
+        font-size: 6.5rem;
+    }
+
+    #container-imagem-sobre {
+        width: 100% !important;
+    }
+
+    .descricao {
+        font-size: 3.5em;
+    }
+
+    .imagem-banner {
+        padding-right: 20%;
+    }
+
+
+    .btn-livros,
+    .btn-autores {
+
+        font-size: 2rem;
+
+    }
+
+    #img-if-books {
+        width: 100vw;
+    }
+
+    .footer-custom {
+        font-size: 3rem;
+        background-color: var(--cor-azul);
+    }
+
+}

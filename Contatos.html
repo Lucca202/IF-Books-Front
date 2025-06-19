@@ -1,17 +1,52 @@
+<!-- /**
+ * Autor: lcnato - BV 3044297
+ * data implementação: 15 / 06 / 2025
+ * Página de Contatos criado pelo professor Marcelo Cereja, 
+ A estrutura se manteve a mesma e não possui nenhuma funcionalidade, 
+ serve apenas de exibição. Foram adicionados algumas estilizações utilizando o 
+ styles_contatos.css
+ * 
+ */ -->
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo Página de Contatos</title>
-    <!-- Autor: MCereja BV123456  
-         Data da implementacao: 19/05/2025 
-         Ajuste: 19/05/2025 add javascript com JQuery -->
+    <title>Página de Contatos</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap-533.min.css">
     <link rel="stylesheet" type="text/css" href="css/style_contatos.css">
 </head>
 
 <body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-custom shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" href="Index.html">Contatos</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+                    <ul class="navbar-nav d-flex gap-3 text-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Index.html">Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Livros.html">Livros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Autores.html">Autores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  active" href="Contatos.html">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <!-- py-5 seria um padding vertical 5, add espaçamento acima e abaixo da div.
         o valor equivalente seria: padding-top: 3rem; padding-bottom: 3rem; -->
     <!-- medidas para as classificacoes py-0	0rem, py-1	0.25rem(4px)
@@ -28,12 +63,11 @@
 
             <div class="mb-3">
                 <label for="Email" class="form-label">E-mail:</label>
-                <input type="email" id="Email" name="usuario_email"
-                    class="form-control"
+                <input type="email" id="Email" name="usuario_email" class="form-control"
                     pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" />
             </div>
 
-<!-- Existe escala col de 1 a 12, onde a equivalencia seria: 
+            <!-- Existe escala col de 1 a 12, onde a equivalencia seria: 
   col-sm- ≥ 576px, col-md- ≥ 768px, col-lg- ≥ 992px, col-xl- ≥ 1200px, col-xxl- ≥ 1400px -->
             <div class="row g-3 mb-3">
                 <div class="col-md-6">
@@ -42,8 +76,8 @@
                 </div>
                 <div class="col-md-6">
                     <label for="celular" class="form-label">Celular:</label>
-                    <input type="tel" id="celular" name="usuario_cel" class="form-control"
-                        pattern="^\d{2}-\d{5}-\d{4}$" placeholder="19-99122-8877" />
+                    <input type="tel" id="celular" name="usuario_cel" class="form-control" pattern="^\d{2}-\d{5}-\d{4}$"
+                        placeholder="19-99122-8877" />
                 </div>
             </div>
 
@@ -58,7 +92,13 @@
             </div>
         </form>
     </div>
-    
+
+    <footer class="footer-custom text-center text-white py-3 mt-auto">
+        <div class="container">
+            &copy; 2025 - Desenvolvido para a disciplina de IDSW | IFSP - São João da Boa Vista
+        </div>
+    </footer>
+
     <script src="js/bootstrap-533.bundle.min.js"></script>
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/contatos-inicial.js"></script>
@@ -69,7 +109,7 @@
             }
         );
     </script> -->
-    
-</body>
-</html>
 
+</body>
+
+</html>

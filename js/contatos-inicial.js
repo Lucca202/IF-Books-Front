@@ -1,6 +1,6 @@
 /*
     @author : Lcnato  bv3044297
-    implementacao: 21 / 05/ 2025
+    implementacao: 21 / 05 / 2025
     Ajuste: Comando iniciais
         add orientaçca a objetos inicial
 */
@@ -36,9 +36,4 @@ $(function() {
     ifbooks.iniciar();
 }
 );
-
-// function teste() {
-//     alert("Olá caneco");
-// }
-
 

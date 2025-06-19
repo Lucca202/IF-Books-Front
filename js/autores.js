@@ -1,7 +1,9 @@
 /**
- * Autor: lcnato
- * data implementação? 23 / 05 / 2025
+ * Autor: lcnato - BV 3044297
+ * data implementação: 15 / 05 / 2025
  * Utiliza ajax com jquery para consumir a API Ifbooks
+ * permitindo a consulta, exclusão e manipulação dos autores.
+ * 
  */
 let autorParaExcluirId = null;
 
@@ -28,30 +30,35 @@ IFbooks.Autores = (function () {
     }
 
 
-     /**
-     * 
-     *
-     *  
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
+    /**
+    * 
+    *
+    *  
+    * 
+    * 
+    * 
+    * 
+    * 
+    * 
+    */
     // Metódos de Requisições do Banco de Dados
     function fazerCriacaoDoAutor(formId) {
         $(formId).on('submit', function (e) {
             e.preventDefault();
 
             const autorId = parseInt($('#novo-autor').val());
-            console.log(autorId);
-
+            if (checarDataAutores($('#novo-data-nascimento').val())) {
+                return;
+            };
             const novoAutor = {
                 nome: $('#novo-nome').val(),
                 nacionalidade: $('#novo-nacionalidade').val(),
-                dataNascimento: formatarDataBR($('#novo-data-nascimento').val()) // Adiciona esse campo no HTML também
-            };
+                dataNascimento: formatarDataBR($('#novo-data-nascimento').val())
+            }
+
+
+
+
 
             $.ajax({
                 url: API_URI_AUTOR,
@@ -63,6 +70,7 @@ IFbooks.Autores = (function () {
                     toast.show();
 
                     const modal = bootstrap.Modal.getInstance(document.getElementById('modal-criar-autor'));
+                    document.activeElement.blur();
                     modal.hide();
 
                     carregarAutores();
@@ -73,13 +81,18 @@ IFbooks.Autores = (function () {
                 }
             });
         });
-    }
+    };
 
     function fazerAlteraçãoDoAutor(edicaoId) {
         $(edicaoId).on('submit', function (e) {
             e.preventDefault();
 
             const autorId = parseInt($('#edit-id').val());
+
+            if (checarDataAutores($('#edit-data-nascimento').val())) {
+                return;
+            };
+
 
             verificarAutor(autorId)
                 .then(() => {
@@ -144,7 +157,10 @@ IFbooks.Autores = (function () {
                 toastSucesso.show();
 
                 const modal = bootstrap.Modal.getInstance(document.getElementById('modal-confirmar-exclusao'));
-                if (modal) modal.hide();
+                if (modal) {
+                    document.activeElement.blur();
+                    modal.hide();
+                }
 
                 carregarAutores();
             },
@@ -164,6 +180,7 @@ IFbooks.Autores = (function () {
             success: function () {
 
                 const modal = bootstrap.Modal.getInstance(document.getElementById('form-edicao'));
+                document.activeElement.blur();
                 modal.hide();
 
 
@@ -176,7 +193,7 @@ IFbooks.Autores = (function () {
                 carregarAutores();
             },
             error: function (xhr) {
-                console.error("Erro ao atualizar:", xhr.status, xhr.responseText); // LOG DO ERRO AQUI
+
                 const toastErro = new bootstrap.Toast(document.getElementById('toast-erro'));
                 toastErro.show();
             }
@@ -199,10 +216,43 @@ IFbooks.Autores = (function () {
     function fazerExclusaoDoAutor(exclusaoId) {
         $(exclusaoId).on('click', function () {
             if (autorParaExcluirId !== null) {
-                deletarAutores(autorParaExcluirId);
+                excluirLivrosDoAutor(autorParaExcluirId)
+                    .then(() => {
+                        deletarAutores(autorParaExcluirId); // Só exclui o autor após os livros
+                    })
+                    .catch(() => {
+                        mostrarToastErro("Erro ao excluir livros do autor.");
+                    });
             }
         });
     }
+    function excluirLivrosDoAutor(autorId) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: API_URI_LIVRO,
+                method: 'GET',
+                dataType: 'json',
+                success: function (livros) {
+                    const livrosDoAutor = livros.filter(l => l.autor.id === autorId);
+
+                    let promises = livrosDoAutor.map(livro => {
+                        return $.ajax({
+                            url: API_URI_LIVRO + `/${livro.id}`,
+                            method: 'DELETE'
+                        });
+                    });
+
+                    Promise.all(promises)
+                        .then(() => resolve())
+                        .catch(() => reject());
+                },
+                error: function () {
+                    reject();
+                }
+            });
+        });
+    }
+
 
     function abrirFormularioEdicao(id) {
         $.ajax({
@@ -241,18 +291,38 @@ IFbooks.Autores = (function () {
             });
         });
     }
+    function checarDataAutores(dataNascimentoInput) {
+        const dataNascimento = new Date(dataNascimentoInput);
+        const hoje = new Date();
 
-     /**
-     * 
-     *
-     *  
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
+        const idade = hoje.getFullYear() - dataNascimento.getFullYear();
+        const mes = hoje.getMonth() - dataNascimento.getMonth();
+        const dia = hoje.getDate() - dataNascimento.getDate();
+
+        if (
+            dataNascimento > hoje
+            || idade < 5
+            || (idade === 5 && (mes < 0 || (mes === 0 && dia < 0)))
+        ) {
+            const toastErro = new bootstrap.Toast(document.getElementById('toast-erro'));
+            $('#toast-erro .toast-body').text('Data de nascimento inválida. Autor deve ter pelo menos 5 anos e ter nascido.');
+            toastErro.show();
+            return true;
+        }
+
+        return false;
+    }
+    /**
+    * 
+    *
+    *  
+    * 
+    * 
+    * 
+    * 
+    * 
+    * 
+    */
 
     // Funções de Exibição / resposta a Bugs / extras
     function arrumarBackDropModal(modalId) {

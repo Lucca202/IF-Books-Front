@@ -1,3 +1,13 @@
+<!-- /**
+ * Autor: lcnato - BV 3044297
+ * data implementação: 15 / 05 / 2025
+ * Página de Livros, onde exibe todos os Livros da tabela, 
+ utiliza o Livros.js para criar as tabelas e funcionalidades. Além de ter atrelados a eles 
+ o CSS externo style_livros.css para a estilização da página
+ * 
+ */ -->
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -6,9 +16,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Livros (Listar)</title>
 
-  <!-- Author: Prof. Marcelo bv?????? -->
-  <!-- Data Impl.: 05/05/2025
-       Ajustes 05/2025: add estilização com o botão consultar -->
 
   <link rel="stylesheet" type="text/css" href="css/bootstrap-533.min.css" />
   <link rel="stylesheet" type="text/css" href="css/style_livros.css">
@@ -20,7 +27,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#index.html">Biblioteca</a>
+      <a class="navbar-brand fw-bold" href="Index.html">Biblioteca</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
         aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,16 +37,16 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
         <ul class="navbar-nav mb-2 mb-lg-0 d-flex gap-3">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Início</a>
+            <a class="nav-link" href="Index.html">Início</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="Livros.html">Livros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="autores.html">Autores</a>
+            <a class="nav-link" href="Autores.html">Autores</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contato.html">Contato</a>
+            <a class="nav-link" href="Contatos.html">Contato</a>
           </li>
   </nav>
 
@@ -55,15 +62,17 @@
             <div class="col-12 col-md-6">
               <label id="texto-pesquisar" for="consulta-id" class="form-label fw-bold text-primary">Pesquisar:</label>
               <div class="input-group">
-                <input type="text" id="consulta-id" name="Livro_nome" class="form-control" placeholder="Digite o ID do livro">
+                <input type="text" id="consulta-id" name="Livro_nome" class="form-control"
+                  placeholder="Digite o ID do livro">
                 <button id="btConsultar" class="btn btn-primary">Consultar</button>
               </div>
             </div>
 
-            <!-- Botão Adicionar Autor -->
+            <!-- Botão Adicionar Livro -->
             <div class="col-12 col-md-6 d-flex align-items-end">
-              <button class="btn btn-success w-100 w-md-auto" data-bs-toggle="modal" data-bs-target="#modal-criar-livro">
-                Adicionar Autor
+              <button class="btn btn-success w-100 w-md-auto" data-bs-toggle="modal"
+                data-bs-target="#modal-criar-livro">
+                Adicionar Livro
               </button>
             </div>
           </div>
@@ -113,8 +122,10 @@
               <textarea class="form-control" id="novo-resumo" rows="3" required></textarea>
             </div>
             <div class="mb-3">
-              <label for="novo-autor" class="form-label">ID do Autor</label>
-              <input type="number" class="form-control" id="novo-autor" required>
+              <label for="select-autor" class="form-label">Autor</label>
+              <select id="select-autor" class="form-select" required>
+                <option value="">Selecione um autor</option>
+              </select>
             </div>
           </div>
           <div class="modal-footer">
@@ -156,19 +167,21 @@
           </div>
 
           <div class="mb-3">
-            <label for="edit-autor" class="form-label">Autor:</label>
-            <input type="number" class="form-control" id="edit-autor" required>
+            <label for="select-autor" class="form-label">Autor</label>
+            <select id="edit-select-autor" class="form-select" required>
+              <option value="">Selecione um autor</option>
+            </select>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" id="cancelar-edicao" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Salvar</button>
-        </div>
+
+          <div class="modal-footer">
+            <button type="button" id="cancelar-edicao" class="btn btn-secondary"
+              data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </div>
       </form>
     </div>
   </div>
-  </div>
-  </div>
+
 
 
 
@@ -195,27 +208,13 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="modal-confirmar-exclusao" tabindex="-1" aria-labelledby="confirmarExclusaoLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="confirmarExclusaoLabel">Confirmar Exclusão</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-        </div>
-        <div class="modal-body">
-          Tem certeza que deseja excluir este livro?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-danger" id="btn-confirmar-exclusao-modal">Excluir</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
+
+
   <script src="js/jquery-3.6.0.min.js"></script>
   <script src="js/bootstrap-533.bundle.min.js"></script>
   <script src="js/api-config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/livros.js"></script>
 </body>
 

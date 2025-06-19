@@ -1,3 +1,10 @@
+ /**
+ * Autor: lcnato - BV 3044297
+ * data implementação: 15 / 05 / 2025
+ *  Página de Estilização do Livros
+ * 
+ */ 
+
 :root {
   --cor-primaria: #CE8054;
   --cor-secundaria: #B35340;
@@ -23,6 +30,10 @@ body {
 .navbar-dark .navbar-brand,
 .navbar-dark .navbar-nav .nav-link {
   color: var(--texto-claro) !important;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
 }
 
 .navbar-dark .navbar-nav .nav-link.active {
@@ -114,6 +125,23 @@ body {
 
 .modal-footer {
   background-color: #f4f1f0;
+}
+
+/* PopUp SweetAlert*/
+.meu-popup {
+  background-color: var(--fundo-suave);
+  color: var(--cor-azul);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.meu-botao-confirmar {
+  background-color: var(--cor-primaria) !important;
+  color: white;
+}
+
+.meu-botao-cancelar {
+  background-color: var(--cor-vinho) !important;
+  color: white;
 }
 
 /* Rodapé */

@@ -1,20 +1,110 @@
-/* Autor:: MCereja 19/05/2025
-   Estilizacao de Contatos utilizando bootstrap com recursividade */
+ /**
+ * Autor: lcnato - BV 3044297
+ * data implementação: 15 / 06 / 2025
+ * Página de estilização de Contatos
+  Algumas estilizações já estavam feitas pelo Professor Marcelo Cereja
+ * 
+ */ 
+:root {
+  --cor-primaria: #CE8054;
+  --cor-secundaria: #B35340;
+  --cor-terciaria: #6F3637;
+  --cor-azul: #233342;
+  --cor-vinho: #4B2B31;
+  --texto-claro: #ffffff;
+  --fundo-suave: #fdfaf9;
+  --fundo-medio: #c0e8f3;
+}
+
+
+body {
+  background-color: var(--fundo-suave) !important;
+  color: var(--cor-azul);
+}
+
+.navbar {
+  background-color: var(--cor-azul);
+  box-shadow: 0 0 1.5rem 0.5rem black !important;
+}
+.navbar-dark .navbar-brand,
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--texto-claro) !important;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+
+.navbar-brand:hover {
+  color: var(--fundo-medio) !important;
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+  color: var(--cor-primaria) !important;
+  font-weight: bold;
+}
+
+
+h3 {
+  color: var(--cor-terciaria);
+  text-shadow: 2px 2px 4px rgb(132, 132, 132) !important;
+}
+
+.form-label {
+  color: var(--cor-azul);
+}
+
+.btn-primary {
+  background-color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+}
+
+.btn-primary:hover {
+  background-color: var(--cor-secundaria);
+  border-color: var(--cor-secundaria);
+}
+
+.btn-outline-secondary {
+  color: var(--cor-vinho);
+  border-color: var(--cor-vinho);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--cor-vinho);
+  color: var(--texto-claro);
+}
+
+input,
+textarea {
+  background-color: #fff;
+  border: 1px solid var(--cor-azul);
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 0.2rem rgba(206, 128, 84, 0.25);
+}
 
 /* Estilo visual geral do formulário */
 form {
-    max-width: 700px;
-    margin: auto;
-    background-color: #f8f9fa;
-    padding: 2rem;
-    border-radius: 0.75rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: auto;
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 0.5rem  black;
+}
+
+.footer-custom {
+  background-color: var(--cor-azul);
+  box-shadow: 0 10px 1.5rem 0.5rem black;
 }
 
 /* Media Query: Espaçamento adaptado para dispositivos menores */
 @media (max-width: 576px) {
-    form {
-        padding: 1.5rem;
-    }
+  form {
+    padding: 1.5rem;
+  }
 }
-
